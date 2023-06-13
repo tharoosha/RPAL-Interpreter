@@ -1,4 +1,0 @@
-#ifndef LEXICON_H
-#define LEXICON_H
-
-#endif //RPAL_INTERPRETER_LEXICON_H
