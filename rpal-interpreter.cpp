@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include "lexicon.hpp"
+#include "psg.hpp"
 
 using namespace std;
 
@@ -27,7 +28,8 @@ int main(){
     }
 
     
-    scan(file);
+    scan(file); //Prepare the first token by placing it within 'NT'
+    E(file);    //Call the first non-terminal procedure to start parsing
 
     // string fileContent;
     // string line;
