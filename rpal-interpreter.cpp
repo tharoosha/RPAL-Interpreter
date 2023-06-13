@@ -28,7 +28,7 @@ int main(){
 
     
     scan(file);
-
+    
     // string fileContent;
     // string line;
     // while (getline(file, line)) {
