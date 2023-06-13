@@ -218,34 +218,34 @@ void scan(ifstream &file) {
     if (checkIfEOF(file)) {
         cout << "\n\nEOF reached !\n\n";
         return;
-    } else{
-        nextTokenType = UNDEFINED_TOKEN;
+    } 
+    nextTokenType = UNDEFINED_TOKEN;
 
-        char peek = file.peek(); //peek and store the next character in stream in this
-        cout << "\nIn scan, peek= '" << peek << "'";
-        NT.clear(); //clear NT to get the next token in file
+    char peek = file.peek(); //peek and store the next character in stream in this
+    cout << "\nIn scan, peek= '" << peek << "'";
+    NT.clear(); //clear NT to get the next token in file
 
-        if (isalpha(peek)) {
-            readIdentifierToken(file);
-        } else if (isdigit(peek)) {
-            readIntegerToken(file);
-        } else if (peek == '/') {
-            resolveIfCommentOrOperator(file);
-        } else if (isOperator(peek)) {
-            readOperatorToken(file);
-        } else if (peek == '\'') { //Start of a string
-            readStringToken(file);
-        } else if (iswspace(peek)) { //ignore whiteSpace chars (space, horTab, newLine, carrReturn, verTab)
-            char x;
-            file.get(x); //further the file pointer and ignore the whitespace character (no need to tokenize it)
-            NT += x;
-            cout << "\nGoing to scan!";
-            scan(file); //call scan to get the next token
-        } else if (isPunctuation(peek)) {
-            readPunctuationChar(file);
-        }
-        scan(file);
+    if (isalpha(peek)) {
+        readIdentifierToken(file);
+    } else if (isdigit(peek)) {
+        readIntegerToken(file);
+    } else if (peek == '/') {
+        resolveIfCommentOrOperator(file);
+    } else if (isOperator(peek)) {
+        readOperatorToken(file);
+    } else if (peek == '\'') { //Start of a string
+        readStringToken(file);
+    } else if (iswspace(peek)) { //ignore whiteSpace chars (space, horTab, newLine, carrReturn, verTab)
+        char x;
+        file.get(x); //further the file pointer and ignore the whitespace character (no need to tokenize it)
+        NT += x;
+        cout << "\nGoing to scan!";
+        scan(file); //call scan to get the next token
+    } else if (isPunctuation(peek)) {
+        readPunctuationChar(file);
     }
+   
+    
     
 }
 
