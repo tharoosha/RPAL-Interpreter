@@ -960,8 +960,8 @@ void convertLambdaExpression(Node *lambdaNode) {
     list<Node *> fcnVariableList;
 
     Node *temp = lambdaNode->firstKid;    //the top left child node of the final standardized lambda sub-tree
-    while (temp->nextSibling->nextSibling !=
-           NULL) { //temp->nextSibling->nextSibling == NULL implies temp->nextSibling is the "Expression" part of the fcnForm
+    while (temp->nextSibling->nextSibling !=NULL) {
+         //temp->nextSibling->nextSibling == NULL implies temp->nextSibling is the "Expression" part of the fcnForm
         temp = temp->nextSibling;
         fcnVariableList.push_back(temp);
     }
@@ -1156,7 +1156,7 @@ void recursivelyStandardizeTree(Node *node) {
                node->label == "ge" || node->label == "ls" || node->label == "le" || node->label == "eq" ||
                node->label == "ne" || node->label == "+" || node->label == "-" || node->label == "*" ||
                node->label == "/" || node->label == "**") {
-        //Do not standardize binary operators (optimizations for the CISE machine) //convertOperator(node);
+        // Do not standardize binary operators (optimizations for the CISE machine) //convertOperator(node);
     } else if (node->label == "tau") {
         //Do not standardize tau (optimizations for the CISE machine)
     } else if (node->label == "lambda") {    //convert lambda expression to standardized form
