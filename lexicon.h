@@ -1,8 +1,4 @@
-//
-// Created by tharo on 6/13/2023.
-//
-
-#ifndef RPAL_INTERPRETER_LEXICON_H
-#define RPAL_INTERPRETER_LEXICON_H
+#ifndef LEXICON_H
+#define LEXICON_H
 
 #endif //RPAL_INTERPRETER_LEXICON_H
