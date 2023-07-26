@@ -9,7 +9,7 @@
 
 using namespace std;
 
-struct MachineNode { // Node abstraction for the CSE machine for both the control and stack
+struct CSEMachineNode { // Node abstraction for the CSE machine for both the control and stack
     string nameValue;
     bool isName;    //whether it's an identifier
     bool isString;
@@ -21,7 +21,7 @@ struct MachineNode { // Node abstraction for the CSE machine for both the contro
     bool isTau;  //refers to the control stack variable which will convert stack elements to tuple
     int numberOfElementsInTauTuple;
     bool isTuple;  //refers to the CSE stack structure variable containing variables
-    std::vector<MachineNode> tupleElements; //can be either int/bool/string
+    std::vector<CSEMachineNode> tupleElements; //can be either int/bool/string
     bool isComma;
     bool isEnvironmentMarker;
     int environmentMarkerIndex;  //for a lambda, it means the environment in which it was placed on the stack.
@@ -38,7 +38,7 @@ struct MachineNode { // Node abstraction for the CSE machine for both the contro
     bool isYF;
     bool isDummy;
 
-    MachineNode() {
+    CSEMachineNode() {
         isName = false;
         isString = false;
         isGamma = false;
@@ -62,16 +62,16 @@ struct MachineNode { // Node abstraction for the CSE machine for both the contro
 struct EnvironmentNode { //Node abstraction for an environment marker in the CSE machine
     EnvironmentNode *parentEnvironment;
     EnvironmentNode *previousEnvironment;
-    MachineNode boundedValuesNode;
-    //the bounded values node will have the bounded variable mappings from the boundedVariables string vector to the tupleElements MachineNode vector.
-    // boundedVariables (string) -> tupleElements (MachineNode) [the tupleElement could be int/string/Lambda]
+    CSEMachineNode boundedValuesNode;
+    //the bounded values node will have the bounded variable mappings from the boundedVariables string vector to the tupleElements CSEMachineNode vector.
+    // boundedVariables (string) -> tupleElements (CSEMachineNode) [the tupleElement could be int/string/Lambda]
     int environmentIndex;
 };
 
-extern vector<list<MachineNode>> controlStructures; // Declaration of the 'controlStructures' vector
+extern vector<list<CSEMachineNode>> controlStructures; // Declaration of the 'controlStructures' vector
 extern int numberOfControlStructures;
 
-void recursivelyFlattenTree(Node *treeNode, list<MachineNode> *controlStructure, int controlStructureIndex,bool processKid, bool processSiblings);
+void recursivelyFlattenTree(Node *treeNode, list<CSEMachineNode> *controlStructure, int controlStructureIndex,bool processKid, bool processSiblings);
 void flattenStandardizedTree();
 
 #endif

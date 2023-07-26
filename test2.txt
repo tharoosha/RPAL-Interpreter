@@ -1,1 +1,17 @@
-let f n = n in Print(f 3)
+let rec firstNo P C = (P/10) ls 10 -> ((P/10),C) 
+| (firstNo (P/10) (C+1))
+in 
+let sternN Q = (Q - (firstNo Q 1 1) * 10**(firstNo Q 1 2)) 
+in
+let rec lastNo L = L ls 10 -> L | lastNo (sternN L)
+in 
+let rec isPal S = S ls 10 -> 1 | (firstNo S 1 1) ne (lastNo S) -> 0 |
+isPal ((sternN S - lastNo S) / 10)
+in 
+let rec PalList Sno Lno pl = Sno eq Lno -> pl | isPal Sno eq 1 -> (PalList (Sno +1) Lno (pl aug Sno)) |
+(PalList (Sno +1) Lno pl )
+in 
+let calc A B = (PalList A B nil)
+in 
+Print(calc 1 10)
+
