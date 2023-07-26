@@ -19,10 +19,9 @@ using namespace std;
 //     struct Note *right;
 // };
 
-int main(){
-    string filename;
-    cout << "Enter the file name: ";
-    cin >> filename;
+int main(int argc, char* argv[]){
+    
+    string filename = argv[1];
 
     ifstream file(filename);
 
