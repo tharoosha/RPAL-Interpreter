@@ -68,11 +68,11 @@ void readIdentifierToken(ifstream &file)
         nextTokenType = KEYWORD_TOKEN;
         // cout << "\nKeyword: " << NT << "\n";
     }
-    else
+    /*else
     {
         cout << '\n'
              << nextTokenType << ": " << NT << "\n";
-    }
+    }*/
 }
 
 void readIntegerToken(ifstream &file)
